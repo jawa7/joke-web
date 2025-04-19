@@ -6,7 +6,7 @@ import * as motion from "motion/react-client";
 import { US, CZ, RU, KZ } from 'country-flag-icons/react/3x2';
 
 type Joke = {
-  id: any,
+  id: string,
   text: string,
   x: number,
   y: number,
@@ -38,8 +38,6 @@ export default function Home() {
     let text = ""
     try {
       const res = await fetchWithBasicAuth(`${process.env.HOST}/api/joke?userId=${userId}`);
-      console.log(res)
-      console.log("asdasd")
       if (!res.data) {
         text = "No more jokes for today"
       } else {

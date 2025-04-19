@@ -1,15 +1,19 @@
 type ApiResponse = {
-  data: any | null;
+  data: Joke | null;
   error: string | null;
 };
+
+type Joke = {
+  id: string,
+  setup: string,
+  punchline: string,
+}
 
 async function fetchWithBasicAuth(url: string): Promise<ApiResponse> {
   const username = process.env.BACKEND_USERNAME;
   const password = process.env.BACKEND_PASSWORD;
 
   if (!username || !password) {
-    console.log(username)
-    console.log(password)
     return {
       data: null,
       error: "Username or password not found in environment variables.",
